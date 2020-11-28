@@ -18,6 +18,10 @@
         <put-attribute name="body" value="/jsp/error.jsp" type="page"/>
     </definition>
 
+    <definition name="pageReact" template="/jsp/templateReact.jsp">
+        <put-attribute name="path" value="" type="string"/>
+    </definition>
+
     <definition name="dialogTemplate" template="/jsp/dialogTemplate.jsp">
         <put-attribute name="title" value="title" type="string"/>
         <put-attribute name="details" value="details" type="string"/>
@@ -69,10 +73,8 @@
     </definition>
 
     <!-- Main Pages -->
-    <definition name="login" extends="pageTemplate">
-        <put-attribute name="title" value="LOGIN"/>
-        <put-attribute name="body" value="/jsp/login.jsp"/>
-        <put-attribute name="removeSignin" value="true"/>
+    <definition name="login" extends="pageReact">
+        <put-attribute name="path" value="LOGIN"/>
     </definition>
 
     <definition name="loginopenid" extends="pageTemplate">
