@@ -9,6 +9,7 @@
     <definition name="mindmapEmbedded" template="/jsp/mindmapEmbed.jsp"/>
     <definition name="mindmapEditor" template="/jsp/mindmapEditor.jsp"/>
     <definition name="mindmapPrint" template="/jsp/mindmapPrint.jsp"/>
+    <definition name="login" template="/jsp/loginReact.jsp"/>
 
 
     <!-- Template Declaration -->
@@ -16,10 +17,6 @@
         <put-attribute name="title" value="" type="string"/>
         <put-attribute name="details" value="" type="string"/>
         <put-attribute name="body" value="/jsp/error.jsp" type="page"/>
-    </definition>
-
-    <definition name="pageReact" template="/jsp/templateReact.jsp">
-        <put-attribute name="path" value="" type="string"/>
     </definition>
 
     <definition name="dialogTemplate" template="/jsp/dialogTemplate.jsp">
@@ -73,9 +70,6 @@
     </definition>
 
     <!-- Main Pages -->
-    <definition name="login" extends="pageReact">
-        <put-attribute name="path" value="LOGIN"/>
-    </definition>
 
     <definition name="loginopenid" extends="pageTemplate">
         <put-attribute name="title" value="LOGIN"/>
