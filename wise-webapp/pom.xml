@@ -55,6 +55,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.wisemapping</groupId>
+            <artifactId>wise-react</artifactId>
+            <version>${com.wisemapping.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
             <version>1.7</version>
@@ -550,6 +556,15 @@
                             <includes>
                                 <include>**/*.css</include>
                                 <include>**/*l</include>
+                            </includes>
+                        </overlay>
+                        <overlay>
+                            <groupId>org.wisemapping</groupId>
+                            <artifactId>wise-react</artifactId>
+                            <type>jar</type>
+                            <targetPath>react/login</targetPath>
+                            <includes>
+                                <include>**/*</include>
                             </includes>
                         </overlay>
                         <overlay>

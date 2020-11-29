@@ -1,4 +1,5 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-js</artifactId>
@@ -11,10 +12,6 @@
         <relativePath>../pom.xml</relativePath>
         <version>5.0.2-SNAPSHOT</version>
     </parent>
-    <scm>
-        <developerConnection>scm:git:git@bitbucket.org:wisemapping/wisemapping-open-source.git</developerConnection>
-    </scm>
-
     <build>
         <plugins>
             <plugin>
@@ -77,8 +74,12 @@
                                         <include>${basedir}/target/tmp/Functions-min.js</include>
                                         <include>${basedir}/target/tmp/Utils-min.js</include>
                                         <include>${basedir}/../mindplot/src/main/javascript/Options.js</include>
-                                        <include>${basedir}/../mindplot/src/main/javascript/libraries/bootstrap/BootstrapDialog.js</include>
-                                        <include>${basedir}/../mindplot/src/main/javascript/libraries/bootstrap/BootstrapDialog.Request.js</include>
+                                        <include>
+                                            ${basedir}/../mindplot/src/main/javascript/libraries/bootstrap/BootstrapDialog.js
+                                        </include>
+                                        <include>
+                                            ${basedir}/../mindplot/src/main/javascript/libraries/bootstrap/BootstrapDialog.Request.js
+                                        </include>
                                     </includes>
                                 </aggregation>
                             </aggregations>
