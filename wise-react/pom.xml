@@ -61,7 +61,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <classesDirectory>target/node_modules/wisemapping-react/</classesDirectory>
+                    <classesDirectory>target/node_modules/wisemapping-react/build/</classesDirectory>
                     <includes>**/*</includes>
                 </configuration>
             </plugin>
