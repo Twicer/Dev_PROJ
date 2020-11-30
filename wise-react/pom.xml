@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>wise-react</artifactId>
     <packaging>jar</packaging>
-    <name>Core JavaScript Utils Libraries</name>
+    <name>React Frontend</name>
 
     <parent>
         <groupId>org.wisemapping</groupId>

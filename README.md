@@ -57,18 +57,18 @@ Now open a browser using the URL http://localhost:8000/wise-editor/src/main/weba
 
 ### Founders
 
-   * Pablo Luna <pveiga@wisemapping.com>
    * Paulo Veiga <pablo@wisemapping.com>
+   * Pablo Luna <pveiga@wisemapping.com>
 
-### Individual Controbutors
+### Individual Contributors
 
    * Ezequiel Bergamaschi <ezequielbergamaschi@gmail.com>
-   * Claudio Barril <claudiobarril@gmail.com>
 
 ### Past Individual Contributors
 
    * Ignacio Manzano
    * Nicolas Damonte
+   * Claudio Barril <claudiobarril@gmail.com>
    
 ## License
 
