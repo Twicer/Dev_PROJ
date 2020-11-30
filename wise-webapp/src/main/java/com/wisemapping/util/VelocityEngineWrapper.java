@@ -6,7 +6,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.jetbrains.annotations.NotNull;
 
 public class VelocityEngineWrapper {
-    private VelocityEngine velocityEngine;
+    private final VelocityEngine velocityEngine;
 
     public VelocityEngineWrapper() {
         ExtendedProperties extendedProperties = new ExtendedProperties();
