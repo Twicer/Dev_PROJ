@@ -51,9 +51,8 @@ public class RecaptchaService {
             logger.debug("Response from recaptcha after parse: " + bodyJson);
 
             final Boolean success = (Boolean) bodyJson.get("success");
-            if (!success) {
-                final List<String> errorCodes = (List<String>) bodyJson
-                        .get("error-codes");
+            if (success!=null && !success) {
+                final List<String> errorCodes = (List<String>) bodyJson.get("error-codes");
                 result = RecaptchaUtil.RECAPTCHA_ERROR_CODE.get(errorCodes.get(0));
             }
         } catch (IOException e) {

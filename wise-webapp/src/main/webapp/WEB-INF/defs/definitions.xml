@@ -9,7 +9,8 @@
     <definition name="mindmapEmbedded" template="/jsp/mindmapEmbed.jsp"/>
     <definition name="mindmapEditor" template="/jsp/mindmapEditor.jsp"/>
     <definition name="mindmapPrint" template="/jsp/mindmapPrint.jsp"/>
-    <definition name="login" template="/jsp/loginReact.jsp"/>
+    <definition name="login" template="/jsp/reactInclude.jsp"/>
+    <definition name="userRegistration" template="/jsp/reactInclude.jsp"/>
 
 
     <!-- Template Declaration -->
@@ -67,21 +68,6 @@
     <definition name="forgotPassword" extends="pageTemplate">
         <put-attribute name="title" value="FORGOT_PASSWORD"/>
         <put-attribute name="body" value="/jsp/userForgotPassword.jsp"/>
-    </definition>
-
-    <definition name="userRegistration" extends="pageTemplate">
-        <put-attribute name="title" value="USER_REGISTRATION"/>
-        <put-attribute name="body" value="/jsp/userRegistration.jsp"/>
-    </definition>
-
-    <definition name="userRegistrationSuccess" extends="pageTemplate">
-        <put-attribute name="title" value="USER_REGISTRATION"/>
-        <put-attribute name="body" value="/jsp/userRegistrationSuccess.jsp"/>
-    </definition>
-
-    <definition name="userRegistrationSuccess" extends="pageTemplate">
-        <put-attribute name="title" value="USER_REGISTRATION"/>
-        <put-attribute name="body" value="/jsp/userRegistrationSuccess.jsp"/>
     </definition>
 
     <definition name="browserNotSupported" extends="pageTemplate">

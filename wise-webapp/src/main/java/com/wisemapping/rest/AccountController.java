@@ -18,7 +18,6 @@
 
 package com.wisemapping.rest;
 
-import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wisemapping.exceptions.WiseMappingException;
 import com.wisemapping.mail.NotificationService;
 import com.wisemapping.model.Collaboration;
@@ -28,7 +27,7 @@ import com.wisemapping.rest.model.RestLogItem;
 import com.wisemapping.security.Utils;
 import com.wisemapping.service.MindmapService;
 import com.wisemapping.service.UserService;
-import com.wordnik.swagger.annotations.Api;
+import io.swagger.annotations.Api;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,7 +123,6 @@ public class AccountController extends BaseController {
     }
 
 
-    @ApiIgnore
     @RequestMapping(method = RequestMethod.POST, value = "/logger/editor", consumes = {"application/xml", "application/json"}, produces = {"application/json", "text/html", "application/xml"})
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void logError(@RequestBody RestLogItem item, @NotNull HttpServletRequest request) {

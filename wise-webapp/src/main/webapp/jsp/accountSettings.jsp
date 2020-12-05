@@ -175,7 +175,7 @@
         if (inputVal != rinputVal) {
             // Password mismatch message ...
             changePasswordMsg.removeClass('alert-info').addClass('alert-danger').show();
-            changePasswordMsg.text('<spring:message code="PASSWORD_MISSMATCH"/>');
+            changePasswordMsg.text('<spring:message code="PASSWORD_MISMATCH"/>');
         } else {
             postChange(
                     "c/restful/account/password",

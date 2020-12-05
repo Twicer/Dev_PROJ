@@ -18,41 +18,18 @@
 
 package com.wisemapping.rest;
 
-import com.mangofactory.swagger.annotations.ApiIgnore;
-import com.wisemapping.exceptions.ImportUnexpectedException;
-import com.wisemapping.exceptions.LabelCouldNotFoundException;
-import com.wisemapping.exceptions.MapCouldNotFoundException;
-import com.wisemapping.exceptions.MultipleSessionsOpenException;
-import com.wisemapping.exceptions.SessionExpiredException;
-import com.wisemapping.exceptions.WiseMappingException;
+import com.wisemapping.exceptions.*;
 import com.wisemapping.importer.ImportFormat;
 import com.wisemapping.importer.Importer;
 import com.wisemapping.importer.ImporterException;
 import com.wisemapping.importer.ImporterFactory;
-import com.wisemapping.model.Collaboration;
-import com.wisemapping.model.CollaborationProperties;
-import com.wisemapping.model.CollaborationRole;
-import com.wisemapping.model.Label;
-import com.wisemapping.model.MindMapHistory;
-import com.wisemapping.model.Mindmap;
-import com.wisemapping.model.User;
-import com.wisemapping.rest.model.RestCollaboration;
-import com.wisemapping.rest.model.RestCollaborationList;
-import com.wisemapping.rest.model.RestLabel;
-import com.wisemapping.rest.model.RestMindmap;
-import com.wisemapping.rest.model.RestMindmapHistory;
-import com.wisemapping.rest.model.RestMindmapHistoryList;
-import com.wisemapping.rest.model.RestMindmapInfo;
-import com.wisemapping.rest.model.RestMindmapList;
+import com.wisemapping.model.*;
+import com.wisemapping.rest.model.*;
 import com.wisemapping.security.Utils;
-import com.wisemapping.service.CollaborationException;
-import com.wisemapping.service.LabelService;
-import com.wisemapping.service.LockInfo;
-import com.wisemapping.service.LockManager;
-import com.wisemapping.service.MindmapService;
+import com.wisemapping.service.*;
 import com.wisemapping.validator.MapInfoValidator;
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiParam;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,26 +38,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 @Api(value = "mindmap", description = "User Mindmap Objects.")
@@ -257,7 +222,6 @@ public class MindmapController extends BaseController {
         return result;
     }
 
-    @ApiIgnore
     @RequestMapping(method = RequestMethod.GET, value = {"/maps/{id}/document/xml", "/maps/{id}/document/xml-pub"}, consumes = {"text/plain"}, produces = {"application/xml; charset=UTF-8"})
     @ResponseBody
     public byte[] retrieveDocument(@PathVariable int id, @NotNull HttpServletResponse response) throws WiseMappingException, IOException {
@@ -267,7 +231,6 @@ public class MindmapController extends BaseController {
         return xmlStr.getBytes(StandardCharsets.UTF_8);
     }
 
-    @ApiIgnore
     @RequestMapping(method = RequestMethod.PUT, value = {"/maps/{id}/document/xml"}, consumes = {"text/plain"})
     @ResponseBody
     public void updateDocument(@PathVariable int id, @RequestBody String xmlDoc) throws WiseMappingException, IOException {
@@ -506,7 +469,6 @@ public class MindmapController extends BaseController {
         mindmapService.updateCollaboration(user, collaboration);
     }
 
-    @ApiIgnore
     @RequestMapping(method = RequestMethod.PUT, value = "/maps/{id}/lock", consumes = {"text/plain"}, produces = {"application/json", "application/xml"})
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void updateMapLock(@RequestBody String value, @PathVariable int id) throws IOException, WiseMappingException {
@@ -522,7 +484,6 @@ public class MindmapController extends BaseController {
         }
     }
 
-    @ApiIgnore
     @RequestMapping(method = RequestMethod.DELETE, value = "/maps/batch")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void batchDelete(@RequestParam(required = true) String ids) throws IOException, WiseMappingException {

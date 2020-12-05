@@ -25,6 +25,7 @@ import com.wisemapping.mail.NotificationService;
 import com.wisemapping.model.User;
 import com.wisemapping.rest.model.RestErrors;
 import com.wisemapping.security.Utils;
+import com.wisemapping.service.RegistrationException;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,5 +115,10 @@ public class BaseController {
         return new RestErrors(ex.getMessage(), Severity.SEVERE);
     }
 
-
+    @ExceptionHandler(RegistrationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public RestErrors handleRegistrationErrors(@NotNull RegistrationException exception) {
+        return new RestErrors(exception, messageSource);
+    }
 }
