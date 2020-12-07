@@ -26,33 +26,12 @@
                         </goals>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <executable>npm</executable>
+                            <executable>yarn</executable>
                             <arguments>
-                                <argument>install</argument>
-                                <argument>wisemapping-react</argument>
+                                <argument>add</argument>
+                                <argument>@wisemapping/webapp</argument>
                             </arguments>
                             <workingDirectory>target</workingDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>exec-maven-plugin</artifactId>
-                <groupId>org.codehaus.mojo</groupId>
-                <executions>
-                    <execution>
-                        <id>npm-build</id>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <phase>generate-resources</phase>
-                        <configuration>
-                            <executable>npm</executable>
-                            <arguments>
-                                <argument>run</argument>
-                                <argument>build</argument>
-                            </arguments>
-                            <workingDirectory>target/node_modules/wisemapping-react/</workingDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -61,7 +40,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <classesDirectory>target/node_modules/wisemapping-react/build/</classesDirectory>
+                    <classesDirectory>target/node_modules/@wisemapping/webapp/dist/</classesDirectory>
                     <includes>**/*</includes>
                 </configuration>
             </plugin>
