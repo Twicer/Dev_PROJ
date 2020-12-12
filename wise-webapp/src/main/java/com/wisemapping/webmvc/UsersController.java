@@ -20,23 +20,15 @@ package com.wisemapping.webmvc;
 
 
 import com.wisemapping.security.Utils;
-import com.wisemapping.service.InvalidAuthSchemaException;
-import com.wisemapping.service.InvalidUserEmailException;
 import com.wisemapping.service.UserService;
-import com.wisemapping.view.UserBean;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Properties;
 
 @Controller
 public class UsersController {
@@ -45,29 +37,9 @@ public class UsersController {
     @Autowired
     private UserService userService;
 
-    @Value("${google.recaptcha2.enabled}")
-    private boolean captchaEnabled;
-
-    @Value("${google.recaptcha2.siteKey}")
-    private String recaptchaSiteKey;
-
     @RequestMapping(value = "user/resetPassword", method = RequestMethod.GET)
     public ModelAndView showResetPasswordPage() {
         return new ModelAndView("forgotPassword");
-    }
-
-    @RequestMapping(value = "user/resetPassword", method = RequestMethod.POST)
-    public ModelAndView resetPassword(@RequestParam(required = true) String email) {
-
-        ModelAndView result;
-        try {
-            userService.resetPassword(email);
-            result = new ModelAndView("forgotPasswordSuccess");
-
-        } catch (InvalidUserEmailException | InvalidAuthSchemaException e) {
-            result = new ModelAndView("forgotPasswordError");
-        }
-        return result;
     }
 
     @RequestMapping(value = "account/settings", method = RequestMethod.GET)

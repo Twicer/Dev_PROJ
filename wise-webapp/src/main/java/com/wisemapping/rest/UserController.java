@@ -18,13 +18,12 @@
 
 package com.wisemapping.rest;
 
+import com.wisemapping.exceptions.EmailNotExistsException;
 import com.wisemapping.exceptions.WiseMappingException;
 import com.wisemapping.model.AuthenticationType;
 import com.wisemapping.model.User;
 import com.wisemapping.rest.model.RestUserRegistration;
-import com.wisemapping.service.RecaptchaService;
-import com.wisemapping.service.RegistrationException;
-import com.wisemapping.service.UserService;
+import com.wisemapping.service.*;
 import com.wisemapping.validator.Messages;
 import com.wisemapping.validator.UserValidator;
 import io.swagger.annotations.Api;
@@ -61,7 +60,7 @@ public class UserController extends BaseController {
 
     final Logger logger = Logger.getLogger(UserController.class);
 
-    @RequestMapping(method = RequestMethod.POST, value = "/user", produces = {"application/json", "application/xml"})
+    @RequestMapping(method = RequestMethod.POST, value = "/users", produces = {"application/json", "application/xml"})
     @ResponseStatus(value = HttpStatus.CREATED)
     public void registerUser(@RequestBody @ApiParam(required = true) RestUserRegistration registration, @NotNull HttpServletRequest request, @NotNull HttpServletResponse response) throws WiseMappingException, BindException {
         logger.info("Register new user:" + registration.getEmail());
@@ -77,6 +76,16 @@ public class UserController extends BaseController {
         user.setAuthenticationType(AuthenticationType.DATABASE);
         userService.createUser(user, false, true);
         response.setHeader("Location", "/service/users/" + user.getId());
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/users/resetPassword", produces = {"application/json", "application/xml"})
+    @ResponseStatus(value = HttpStatus.OK)
+    public void resetPassword(@RequestParam String email) throws InvalidAuthSchemaException, EmailNotExistsException {
+        try {
+            userService.resetPassword(email);
+        }catch (InvalidUserEmailException e){
+            throw new EmailNotExistsException(e);
+        }
     }
 
     private void verify(@NotNull final RestUserRegistration registration, @NotNull String remoteAddress) throws BindException {

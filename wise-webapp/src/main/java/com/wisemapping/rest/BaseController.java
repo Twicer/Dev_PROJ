@@ -19,12 +19,14 @@
 package com.wisemapping.rest;
 
 import com.wisemapping.exceptions.ClientException;
+import com.wisemapping.exceptions.EmailNotExistsException;
 import com.wisemapping.exceptions.ImportUnexpectedException;
 import com.wisemapping.exceptions.Severity;
 import com.wisemapping.mail.NotificationService;
 import com.wisemapping.model.User;
 import com.wisemapping.rest.model.RestErrors;
 import com.wisemapping.security.Utils;
+import com.wisemapping.service.InvalidUserEmailException;
 import com.wisemapping.service.RegistrationException;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
