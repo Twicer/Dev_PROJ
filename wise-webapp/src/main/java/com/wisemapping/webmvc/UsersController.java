@@ -37,9 +37,14 @@ public class UsersController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "user/resetPassword", method = RequestMethod.GET)
+    @RequestMapping(value = "forgot-password", method = RequestMethod.GET)
     public ModelAndView showResetPasswordPage() {
-        return new ModelAndView("forgotPassword");
+        return new ModelAndView("forgot-password");
+    }
+
+    @RequestMapping(value = "registration", method = RequestMethod.GET)
+    public ModelAndView showRegistrationPage() {
+        return new ModelAndView("registration");
     }
 
     @RequestMapping(value = "account/settings", method = RequestMethod.GET)
@@ -48,8 +53,4 @@ public class UsersController {
         return "accountSettings";
     }
 
-    @RequestMapping(value = "user/registration", method = RequestMethod.GET)
-    public ModelAndView showRegistrationPage() {
-        return new ModelAndView("userRegistration");
-    }
 }

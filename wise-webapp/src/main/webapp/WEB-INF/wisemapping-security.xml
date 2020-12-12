@@ -8,15 +8,18 @@
           http://www.springframework.org/schema/security
           http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <sec:http pattern="/static/**" security="none"/>
+    <sec:http pattern="/c/login" security="none"/>
+    <sec:http pattern="/c/registration" security="none"/>
+    <sec:http pattern="/c/forgot-password" security="none"/>
+
+
+
     <sec:http pattern="/css/**" security="none"/>
     <sec:http pattern="/js/**" security="none"/>
     <sec:http pattern="/images/**" security="none"/>
     <sec:http pattern="/icons/**" security="none"/>
-    <sec:http pattern="/favicon.ico" security="none"/>
 
-    <sec:http pattern="/c/login" security="none"/>
-    <sec:http pattern="/c/user/registration" security="none"/>
-    <sec:http pattern="/c/user/resetPassword" security="none"/>
     <sec:http pattern="/c/home" security="none"/>
 
     <sec:http pattern="/c/maps/*/embed" security="none"/>
