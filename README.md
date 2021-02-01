@@ -39,15 +39,15 @@ Password: test
 
 ## Running the JS only version
 
-Start by creating the .zip file:
+Start by creating the .zip file.
 
 `mvn assembly:assembly -Dmaven.test.skip=true`
 
-To test the javascript frontend you then do:
+To test the javascript frontend, install a simple http-server.
 
-    ruby -rwebrick -e 'WEBrick::HTTPServer.new(:Port=>8000,:DocumentRoot=>".").start'
+`npm install -g http-server`
 
-Now open a browser using the URL http://localhost:8000/wise-editor/src/main/webapp/
+Now open a browser using the URL http://localhost:8080/wise-editor/src/main/webapp/
 
 ## Maintenance
 
