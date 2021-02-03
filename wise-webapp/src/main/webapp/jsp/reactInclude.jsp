@@ -3,15 +3,17 @@
 <html lang="en">
 
 <head>
+    <script>
+        window.serverconfig = { apiBaseUrl: 'http://localhost:8080' };
+    </script>
+
     <meta charset="utf-8" />
     <base href="/static/" />
-
     <link rel="icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="WiseMappping" />
     <link rel="apple-touch-icon" href="favicon.png" />
-
     <link rel="manifest" href="manifest.json" />
     <title>Loading | WiseMapping</title>
 </head>
