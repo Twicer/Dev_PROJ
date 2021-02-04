@@ -48,31 +48,12 @@
         <put-attribute name="title" value="NO_ENOUGH_PERMISSIONS"/>
         <put-attribute name="details" value="NO_ENOUGH_PERMISSIONS_DETAILS"/>
     </definition>
-
-    <definition name="forgotPasswordError" extends="errorTemplate">
-        <put-attribute name="title" value="INVALID_EMAIL_ERROR"/>
-        <put-attribute name="body" value="/jsp/userForgotPasswordError.jsp"/>
-    </definition>
-
-    <definition name="forgotPasswordSuccess" extends="errorTemplate">
-        <put-attribute name="title" value="FORGOT_PASSWORD"/>
-        <put-attribute name="body" value="/jsp/userForgotPasswordSuccess.jsp"/>
-    </definition>
     
     <definition name="termsOfUse" extends="pageTemplate">
         <put-attribute name="title" value="TERM_OF_USE"/>
         <put-attribute name="body" value="/jsp/termsOfUse.jsp"/>
     </definition>
 
-    <definition name="forgotPassword" extends="pageTemplate">
-        <put-attribute name="title" value="FORGOT_PASSWORD"/>
-        <put-attribute name="body" value="/jsp/userForgotPassword.jsp"/>
-    </definition>
-
-    <definition name="browserNotSupported" extends="pageTemplate">
-        <put-attribute name="title" value="BROWSER_NOT_SUPPORTED_TITLE"/>
-        <put-attribute name="body" value="/jsp/browserNotSupported.jsp"/>
-    </definition>
 
     <!-- Dialog Forms -->
 
@@ -142,16 +123,6 @@
         <put-attribute name="title" value="HISTORY"/>
         <put-attribute name="details" value="HISTORY_INFO"/>
         <put-attribute name="body" value="/jsp/mindmapHistory.jsp"/>
-    </definition>
-
-    <definition name="activationAccountConfirmation" extends="pageTemplate">
-        <put-attribute name="title" value="ACCOUNT_ACTIVED"/>
-        <put-attribute name="body" value="/jsp/activationAccountConfirmation.jsp"/>
-    </definition>
-
-    <definition name="activationAccountConfirmationFail" extends="pageTemplate">
-        <put-attribute name="title" value="ACCOUNT_ACTIVED_FAIL"/>
-        <put-attribute name="body" value="/jsp/activationAccountConfirmationFail.jsp"/>
     </definition>
 
     <definition name="keyboard" extends="dialogTemplate">
