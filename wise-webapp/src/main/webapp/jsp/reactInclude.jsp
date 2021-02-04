@@ -12,7 +12,7 @@
     <link rel="icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="WiseMappping" />
+    <meta name="description" content="WiseMapping" />
     <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="manifest" href="manifest.json" />
     <title>Loading | WiseMapping</title>
