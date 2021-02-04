@@ -497,7 +497,11 @@ public class MindmapController extends BaseController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/maps", consumes = {"application/xml", "application/json", "application/wisemapping+xml"})
     @ResponseStatus(value = HttpStatus.CREATED)
-    public void createMap(@RequestBody RestMindmap restMindmap, @NotNull HttpServletResponse response, @RequestParam(required = false) String title, @RequestParam(required = false) String description) throws IOException, WiseMappingException {
+    public void createMap(@RequestBody(required = false) RestMindmap restMindmap, @NotNull HttpServletResponse response, @RequestParam(required = false) String title, @RequestParam(required = false) String description) throws IOException, WiseMappingException {
+        // If a default maps has not been defined, just create one ...
+        if(restMindmap==null){
+            restMindmap = new RestMindmap();
+        }
 
         // Overwrite title and description if they where specified by parameter.
         if (title != null && !title.isEmpty()) {
@@ -505,6 +509,8 @@ public class MindmapController extends BaseController {
         }
         if (description != null && !description.isEmpty()) {
             restMindmap.setDescription(description);
+        }else {
+            restMindmap.setDescription("");
         }
 
         // Validate ...
