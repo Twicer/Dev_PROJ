@@ -152,7 +152,7 @@ public class RestMindmapInfo {
     public void setLastModificationTime(String value) {
     }
 
-    public boolean isPublic() {
+    public boolean getPublic() {
         return mindmap.isPublic();
     }
 
