@@ -115,27 +115,8 @@ public class MindmapController {
         return "mindmapPublishFull";
     }
 
-    @RequestMapping(value = "maps/{id}/history", method = RequestMethod.GET)
-    public String showHistoryPage(@PathVariable int id, @NotNull Model model) {
-        model.addAttribute("mindmapId", id);
-        return "mindmapHistory";
-    }
-
-    @RequestMapping(value = "maps/{id}/historyf", method = RequestMethod.GET)
-    public String showHistoryPageFull(@PathVariable int id, @NotNull Model model) {
-        showHistoryPage(id, model);
-        return "mindmapHistoryFull";
-    }
-
     @RequestMapping(value = "maps/")
     public String showListPage(@NotNull Model model) {
-        final Locale locale = LocaleContextHolder.getLocale();
-        // @Todo: This should be more flexible  ...
-        String localeStr = locale.toString().toLowerCase();
-        if ("es".equals(locale.getLanguage()) || "pt".equals(locale.getLanguage())) {
-            localeStr = locale.getLanguage();
-        }
-        model.addAttribute("locale", localeStr);
         return "mindmapList";
     }
 
