@@ -35,8 +35,6 @@
         <put-attribute name="body" value="/jsp/errorTemplate.jsp"/>
     </definition>
 
-    <definition name="iframeWrapper" template="/jsp/iframeWrapper.jsp"/>
-
     <!-- Error Pages -->
     <definition name="unexpectedError" extends="errorTemplate">
         <put-attribute name="title" value="UNEXPECTED_ERROR"/>
@@ -48,20 +46,8 @@
         <put-attribute name="title" value="NO_ENOUGH_PERMISSIONS"/>
         <put-attribute name="details" value="NO_ENOUGH_PERMISSIONS_DETAILS"/>
     </definition>
-    
-    <definition name="termsOfUse" extends="pageTemplate">
-        <put-attribute name="title" value="TERM_OF_USE"/>
-        <put-attribute name="body" value="/jsp/termsOfUse.jsp"/>
-    </definition>
-
 
     <!-- Dialog Forms -->
-
-    <definition name="mindmapDetail" extends="dialogTemplate">
-        <put-attribute name="title" value="MINDMAP_DETAIL"/>
-        <put-attribute name="body" value="/jsp/mindmapDetail.jsp"/>
-    </definition>
-
     <definition name="accountSettings" extends="dialogTemplate">
         <put-attribute name="title" value="SETTINGS"/>
         <put-attribute name="body" value="/jsp/accountSettings.jsp"/>
@@ -83,18 +69,6 @@
         <put-attribute name="title" value=""/>
         <put-attribute name="details" value=""/>
         <put-attribute name="body" value="/jsp/mindmapExport.jsp"/>
-    </definition>
-
-    <definition name="mindmapPublish" extends="dialogTemplate">
-        <put-attribute name="title" value=""/>
-        <put-attribute name="details" value=""/>
-        <put-attribute name="body" value="/jsp/mindmapPublish.jsp"/>
-    </definition>
-
-    <definition name="mindmapPublishFull" extends="dialogFullTemplate">
-        <put-attribute name="title" value=""/>
-        <put-attribute name="details" value=""/>
-        <put-attribute name="body" value="/jsp/mindmapPublish.jsp"/>
     </definition>
 
     <definition name="mindmapShare" extends="dialogTemplate">
