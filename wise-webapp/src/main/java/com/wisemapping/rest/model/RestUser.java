@@ -57,15 +57,7 @@ public class RestUser {
     public Calendar getCreationDate() {
         return user.getCreationDate();
     }
-
-    public void setTags(Set<String> tags) {
-        user.setTags(tags);
-    }
-
-    public Set<String> getTags() {
-        return user.getTags();
-    }
-
+    
     public String getFirstname() {
         return user.getFirstname();
     }
@@ -82,6 +74,7 @@ public class RestUser {
         user.setLastname(lastname);
     }
 
+    @JsonIgnore
     public long getId() {
         return user.getId();
     }
@@ -101,10 +94,6 @@ public class RestUser {
     public void setPassword(final String password) {
         this.user.setPassword(password);
         this.password = password;
-    }
-
-    public String getPassword() {
-        return this.password;
     }
 
     @JsonIgnore

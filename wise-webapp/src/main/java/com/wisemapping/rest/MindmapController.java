@@ -48,7 +48,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 
-@Api(value = "mindmap", description = "User Mindmap Objects.")
 @Controller
 public class MindmapController extends BaseController {
     final Logger logger = Logger.getLogger("com.wisemapping");

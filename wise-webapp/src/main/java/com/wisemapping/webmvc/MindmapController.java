@@ -57,14 +57,6 @@ public class MindmapController {
         return "mindmapImport";
     }
 
-    @RequestMapping(value = "maps/{id}/details")
-    public String showDetails(@PathVariable int id, @NotNull Model model, @NotNull HttpServletRequest request) throws MapCouldNotFoundException {
-        final MindMapBean mindmap = findMindmapBean(id);
-        model.addAttribute("mindmap", mindmap);
-        model.addAttribute("baseUrl", request.getAttribute("site.baseurl"));
-        return "mindmapDetail";
-    }
-
     @RequestMapping(value = "maps/{id}/print")
     public String showPrintPage(@PathVariable int id, @NotNull Model model) throws MapCouldNotFoundException {
         final MindMapBean mindmap = findMindmapBean(id);
@@ -99,20 +91,6 @@ public class MindmapController {
     public String showSharePageFull(@PathVariable int id, @NotNull Model model) throws MapCouldNotFoundException {
         showSharePage(id, model);
         return "mindmapShareFull";
-    }
-
-    @RequestMapping(value = "maps/{id}/publish")
-    public String showPublishPage(@PathVariable int id, @NotNull Model model, @NotNull HttpServletRequest request) throws MapCouldNotFoundException {
-        final Mindmap mindmap = findMindmap(id);
-        model.addAttribute("mindmap", mindmap);
-        model.addAttribute("baseUrl", request.getAttribute("site.baseurl"));
-        return "mindmapPublish";
-    }
-
-    @RequestMapping(value = "maps/{id}/publishf")
-    public String showPublishPageFull(@PathVariable int id, @NotNull Model model, @NotNull HttpServletRequest request) throws MapCouldNotFoundException {
-        showPublishPage(id, model, request);
-        return "mindmapPublishFull";
     }
 
     @RequestMapping(value = "maps/")

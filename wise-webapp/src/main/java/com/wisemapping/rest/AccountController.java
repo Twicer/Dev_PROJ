@@ -24,6 +24,7 @@ import com.wisemapping.model.Collaboration;
 import com.wisemapping.model.Mindmap;
 import com.wisemapping.model.User;
 import com.wisemapping.rest.model.RestLogItem;
+import com.wisemapping.rest.model.RestUser;
 import com.wisemapping.security.Utils;
 import com.wisemapping.service.MindmapService;
 import com.wisemapping.service.UserService;
@@ -69,6 +70,12 @@ public class AccountController extends BaseController {
         final User user = Utils.getUser(true);
         user.setPassword(password);
         userService.changePassword(user);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/account", produces = {"application/json", "application/xml"})
+    public RestUser fetchAccount() {
+        final User user = Utils.getUser(true);
+        return new RestUser(user);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "account/firstname", consumes = {"text/plain"})
