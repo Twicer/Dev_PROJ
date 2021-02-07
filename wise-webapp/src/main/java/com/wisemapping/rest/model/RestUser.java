@@ -57,7 +57,7 @@ public class RestUser {
     public Calendar getCreationDate() {
         return user.getCreationDate();
     }
-    
+
     public String getFirstname() {
         return user.getFirstname();
     }
