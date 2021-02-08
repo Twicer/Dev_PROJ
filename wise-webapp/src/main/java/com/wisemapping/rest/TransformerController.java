@@ -124,9 +124,6 @@ public class TransformerController extends BaseController {
             case SVG:
                 result = this.transformSvg(svg);
                 break;
-            case FREEMIND:
-                result = this.transformFreemind(mapXml);
-                break;
             default:
                 throw new IllegalArgumentException("Unsupported export format");
 

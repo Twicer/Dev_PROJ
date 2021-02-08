@@ -19,17 +19,6 @@
         <put-attribute name="body" value="/jsp/error.jsp" type="page"/>
     </definition>
 
-    <definition name="dialogTemplate" template="/jsp/dialogTemplate.jsp">
-        <put-attribute name="title" value="title" type="string"/>
-        <put-attribute name="details" value="details" type="string"/>
-        <put-attribute name="body" value="/jsp/error.jsp" type="page"/>
-    </definition>
-
-    <definition name="dialogFullTemplate" template="/jsp/dialogFullTemplate.jsp">
-        <put-attribute name="title" value="title" type="string"/>
-        <put-attribute name="details" value="details" type="string"/>
-        <put-attribute name="body" value="/jsp/error.jsp" type="page"/>
-    </definition>
 
     <definition name="errorTemplate" extends="pageTemplate">
         <put-attribute name="body" value="/jsp/errorTemplate.jsp"/>
@@ -47,49 +36,4 @@
         <put-attribute name="details" value="NO_ENOUGH_PERMISSIONS_DETAILS"/>
     </definition>
 
-    <!-- Dialog Forms -->
-    <definition name="accountSettings" extends="dialogTemplate">
-        <put-attribute name="title" value="SETTINGS"/>
-        <put-attribute name="body" value="/jsp/accountSettings.jsp"/>
-    </definition>
-
-    <definition name="editProfile" extends="dialogTemplate">
-        <put-attribute name="title" value="EDIT_PROFILE"/>
-        <put-attribute name="details" value="FIELD_REQUIRED_MSG"/>
-        <put-attribute name="body" value="/jsp/editProfile.jsp"/>
-    </definition>
-
-    <definition name="mindmapExport" extends="dialogTemplate">
-        <put-attribute name="title" value=""/>
-        <put-attribute name="details" value=""/>
-        <put-attribute name="body" value="/jsp/mindmapExport.jsp"/>
-    </definition>
-
-    <definition name="mindmapExportFull" extends="dialogFullTemplate">
-        <put-attribute name="title" value=""/>
-        <put-attribute name="details" value=""/>
-        <put-attribute name="body" value="/jsp/mindmapExport.jsp"/>
-    </definition>
-
-    <definition name="mindmapShare" extends="dialogTemplate">
-        <put-attribute name="title" value=""/>
-        <put-attribute name="details" value=""/>
-        <put-attribute name="body" value="/jsp/mindmapShare.jsp"/>
-    </definition>
-
-    <definition name="mindmapShareFull" extends="dialogFullTemplate">
-        <put-attribute name="title" value=""/>
-        <put-attribute name="details" value=""/>
-        <put-attribute name="body" value="/jsp/mindmapShare.jsp"/>
-    </definition>
-
-    <definition name="mindmapImport" extends="dialogTemplate">
-        <put-attribute name="body" value="/jsp/mindmapImport.jsp"/>
-    </definition>
-
-    <definition name="keyboard" extends="dialogTemplate">
-        <put-attribute name="title" value="KEYBOARD"/>
-        <put-attribute name="details" value="KEYBOARD_MSG"/>
-        <put-attribute name="body" value="/jsp/mindmapEditorKeyboard.jsp"/>
-    </definition>
 </tiles-definitions>
