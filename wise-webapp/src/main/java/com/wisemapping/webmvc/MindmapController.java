@@ -66,20 +66,7 @@ public class MindmapController {
         model.addAttribute("locale", locale.toString().toLowerCase());
         return "mindmapPrint";
     }
-
-    @RequestMapping(value = "maps/{id}/export")
-    public String showExportPage(@PathVariable int id, @NotNull Model model) throws IOException, MapCouldNotFoundException {
-        final Mindmap mindmap = findMindmap(id);
-        model.addAttribute("mindmap", mindmap);
-        return "mindmapExport";
-    }
-
-    @RequestMapping(value = "maps/{id}/exportf")
-    public String showExportPageFull(@PathVariable int id, @NotNull Model model) throws IOException, MapCouldNotFoundException {
-        showExportPage(id, model);
-        return "mindmapExportFull";
-    }
-
+    
     @RequestMapping(value = "maps/{id}/share")
     public String showSharePage(@PathVariable int id, @NotNull Model model) throws MapCouldNotFoundException {
         final Mindmap mindmap = findMindmap(id);
