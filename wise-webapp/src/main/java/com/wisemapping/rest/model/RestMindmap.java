@@ -49,9 +49,9 @@ import java.util.Calendar;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RestMindmap {
     @JsonIgnore
-    private Collaborator collaborator;
+    private final Collaborator collaborator;
     @JsonIgnore
-    private Mindmap mindmap;
+    private final Mindmap mindmap;
     @Nullable
     private String properties;
 

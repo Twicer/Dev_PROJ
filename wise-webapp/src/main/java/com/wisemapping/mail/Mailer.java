@@ -35,9 +35,9 @@ public final class Mailer {
 
     private JavaMailSender mailSender;
     private VelocityEngineWrapper velocityEngineWrapper;
-    private String serverFromEmail;
-    private String supportEmail;
-    private String errorReporterEmail;
+    private final String serverFromEmail;
+    private final String supportEmail;
+    private final String errorReporterEmail;
 
     //~ Methods ..............................................................................................
 

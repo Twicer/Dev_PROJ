@@ -33,7 +33,7 @@ public class ExportFreemindTest {
             // Export mile content ...
             final ByteArrayOutputStream bos = new ByteArrayOutputStream();
             freemindExporter.export(mindmap, bos);
-            final String exportContent = new String(bos.toByteArray(), ENC_LATIN1);
+            final String exportContent = bos.toString(ENC_LATIN1);
 
             Assert.assertEquals(exportContent, recContent);
 

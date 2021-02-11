@@ -46,7 +46,7 @@ import java.util.Locale;
 
 public class BaseController {
 
-    final private Logger logger = Logger.getLogger("com.wisemapping.rest");
+    final private Logger logger = Logger.getLogger(BaseController.class);
 
     @Qualifier("messageSource")
     @Autowired

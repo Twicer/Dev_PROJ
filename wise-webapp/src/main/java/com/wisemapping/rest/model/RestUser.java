@@ -41,7 +41,7 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RestUser {
 
-    private User user;
+    private final User user;
     private String password;
 
     public RestUser() {

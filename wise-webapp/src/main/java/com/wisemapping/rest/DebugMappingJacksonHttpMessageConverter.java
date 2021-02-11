@@ -49,8 +49,8 @@ public class DebugMappingJacksonHttpMessageConverter extends MappingJackson2Http
 
 
 class WrapHttpInputMessage implements HttpInputMessage {
-    private InputStream body;
-    private HttpHeaders headers;
+    private final InputStream body;
+    private final HttpHeaders headers;
 
     WrapHttpInputMessage(InputStream is, HttpHeaders headers) {
         this.body = is;

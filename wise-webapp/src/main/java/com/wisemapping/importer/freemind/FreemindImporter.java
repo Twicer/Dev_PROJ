@@ -30,6 +30,7 @@ import com.wisemapping.jaxb.freemind.Node;
 import com.wisemapping.jaxb.wisemap.RelationshipType;
 import com.wisemapping.jaxb.wisemap.TopicType;
 import com.wisemapping.jaxb.wisemap.Link;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jsoup.Jsoup;
@@ -49,6 +50,7 @@ import java.math.BigInteger;
 
 public class FreemindImporter
         implements Importer {
+    final private Logger logger = Logger.getLogger(FreemindImporter.class);
 
     private com.wisemapping.jaxb.wisemap.ObjectFactory mindmapObjectFactory;
     private java.util.Map<String, TopicType> nodesMap = null;
@@ -56,7 +58,7 @@ public class FreemindImporter
 
     private int currentId;
 
-    public static void main(String argv[]) {
+    public static void main(String[] argv) {
 
 
         // Now, calculate the order it belongs to ...
@@ -130,12 +132,13 @@ public class FreemindImporter
             addRelationships(mindmapMap);
 
             JAXBUtils.saveMap(mindmapMap, baos);
-            wiseXml = new String(baos.toByteArray(), FreemindConstant.UTF_8_CHARSET);
+            wiseXml = baos.toString(FreemindConstant.UTF_8_CHARSET);
             result.setXmlStr(wiseXml);
             result.setTitle(mapName);
             result.setDescription(description);
 
         } catch (JAXBException |  TransformerException e) {
+            logger.debug(e);
             throw new ImporterException(e);
         }
         return result;
@@ -314,12 +317,12 @@ public class FreemindImporter
 
                 final String endarrow = arrow.getENDARROW();
                 if (endarrow != null) {
-                    relt.setEndArrow(!endarrow.toLowerCase().equals("none"));
+                    relt.setEndArrow(!endarrow.equalsIgnoreCase("none"));
                 }
 
                 final String startarrow = arrow.getSTARTARROW();
                 if (startarrow != null) {
-                    relt.setStartArrow(!startarrow.toLowerCase().equals("none"));
+                    relt.setStartArrow(!startarrow.equalsIgnoreCase("none"));
                 }
                 relt.setLineType("3");
                 relationships.add(relt);
@@ -591,8 +594,8 @@ public class FreemindImporter
     }
 
     static private class Coord {
-        private int y;
-        private int x;
+        private final int y;
+        private final int x;
 
         private Coord(@NotNull String pos) {
             final String[] split = pos.split(",");

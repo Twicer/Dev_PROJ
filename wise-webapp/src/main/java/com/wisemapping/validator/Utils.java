@@ -28,7 +28,7 @@ import java.util.regex.Matcher;
 final public class Utils {
     //Set the email emailPattern string
 
-    static private Pattern emailPattern = Pattern.compile(".+@.+\\.[a-z]+");
+    static private final Pattern emailPattern = Pattern.compile(".+@.+\\.[a-z]+");
 
     private Utils() {
 

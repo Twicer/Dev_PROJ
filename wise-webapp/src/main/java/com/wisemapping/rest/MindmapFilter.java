@@ -63,7 +63,7 @@ public abstract class MindmapFilter {
     };
 
     protected String id;
-    private static MindmapFilter[] values = {ALL, MY_MAPS, PUBLIC, STARRED, SHARED_WITH_ME};
+    private static final MindmapFilter[] values = {ALL, MY_MAPS, PUBLIC, STARRED, SHARED_WITH_ME};
 
     private MindmapFilter(@NotNull String id) {
         this.id = id;

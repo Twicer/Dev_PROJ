@@ -51,8 +51,8 @@ import java.util.Set;
 public class RestMindmapInfo {
 
     @JsonIgnore
-    private Mindmap mindmap;
-    private Collaborator collaborator;
+    private final Mindmap mindmap;
+    private final Collaborator collaborator;
 
     public RestMindmapInfo() {
         this(new Mindmap(), null);

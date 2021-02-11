@@ -50,7 +50,7 @@ import java.util.*;
 
 @Controller
 public class MindmapController extends BaseController {
-    final Logger logger = Logger.getLogger("com.wisemapping");
+    final Logger logger = Logger.getLogger(MindmapController.class);
 
     private static final String LATEST_HISTORY_REVISION = "latest";
 

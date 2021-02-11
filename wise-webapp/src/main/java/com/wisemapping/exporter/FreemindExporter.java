@@ -45,6 +45,7 @@ import java.io.OutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -214,7 +215,7 @@ public class FreemindExporter
         htmlContent.append("</body></html>");
 
         DocumentBuilder db = getInstanceBuilder();
-        byte[] bytes = htmlContent.toString().getBytes("UTF-8");
+        byte[] bytes = htmlContent.toString().getBytes(StandardCharsets.UTF_8);
         Document document = db.parse(new ByteArrayInputStream(bytes), "UTF-8");
         richcontent.setHtml(document.getDocumentElement());
         return richcontent;
@@ -338,7 +339,7 @@ public class FreemindExporter
     //  8 Normal
     // 10 Large
     // 15 Huge
-    static private Map<Integer, Integer> wiseToFreeFontSize = new HashMap<Integer, Integer>();
+    static private final Map<Integer, Integer> wiseToFreeFontSize = new HashMap<Integer, Integer>();
 
     static {
         wiseToFreeFontSize.put(6, 10);

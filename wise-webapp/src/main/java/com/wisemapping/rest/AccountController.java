@@ -57,7 +57,7 @@ public class AccountController extends BaseController {
     @Autowired
     private NotificationService notificationService;
 
-    final Logger logger = Logger.getLogger("com.wisemapping");
+    final Logger logger = Logger.getLogger(AccountController.class);
 
 
     @RequestMapping(method = RequestMethod.PUT, value = "account/password", consumes = {"text/plain"})

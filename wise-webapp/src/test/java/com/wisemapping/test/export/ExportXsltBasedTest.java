@@ -35,7 +35,7 @@ public class ExportXsltBasedTest {
             // Export mile content ...
             final ByteArrayOutputStream bos = new ByteArrayOutputStream();
             exporter.export(wiseMapContent, bos);
-            final String exportContent = new String(bos.toByteArray(), StandardCharsets.UTF_8)
+            final String exportContent = bos.toString(StandardCharsets.UTF_8)
                     .replaceAll("\n\\p{Blank}+", "\n")
                     .replaceAll("\n+", "\n");
             Assert.assertEquals(exportContent, recContent);

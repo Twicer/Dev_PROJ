@@ -52,11 +52,6 @@ public class MindmapController {
     @Autowired
     private MindmapService mindmapService;
 
-    @RequestMapping(value = "maps/import")
-    public String showImportPage() {
-        return "mindmapImport";
-    }
-
     @RequestMapping(value = "maps/{id}/print")
     public String showPrintPage(@PathVariable int id, @NotNull Model model) throws MapCouldNotFoundException {
         final MindMapBean mindmap = findMindmapBean(id);
@@ -66,7 +61,7 @@ public class MindmapController {
         model.addAttribute("locale", locale.toString().toLowerCase());
         return "mindmapPrint";
     }
-    
+
     @RequestMapping(value = "maps/{id}/share")
     public String showSharePage(@PathVariable int id, @NotNull Model model) throws MapCouldNotFoundException {
         final Mindmap mindmap = findMindmap(id);

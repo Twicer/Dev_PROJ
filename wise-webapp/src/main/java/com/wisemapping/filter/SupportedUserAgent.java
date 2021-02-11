@@ -27,7 +27,7 @@ import java.io.Serializable;
 public class SupportedUserAgent implements Serializable {
     public static final String USER_AGENT_HEADER = "User-Agent";
     transient private UserAgent userAgent;
-    private String header;
+    private final String header;
 
     private SupportedUserAgent(@NotNull final String header) {
         this.header = header;

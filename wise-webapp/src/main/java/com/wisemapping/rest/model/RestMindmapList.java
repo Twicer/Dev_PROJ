@@ -44,7 +44,7 @@ public class RestMindmapList {
     private List<RestMindmapInfo> mindmapsInfo;
 
     public RestMindmapList() {
-        this(Collections.<Mindmap>emptyList(), null);
+        this(Collections.emptyList(), null);
     }
 
     public RestMindmapList(@NotNull List<Mindmap> mindmaps, @NotNull Collaborator collaborator) {

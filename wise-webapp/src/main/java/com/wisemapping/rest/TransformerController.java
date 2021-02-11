@@ -107,7 +107,7 @@ public class TransformerController extends BaseController {
 
         // Obtains transformation type based on the last part of the URL ...
         final String requestURI = request.getRequestURI();
-        final String format = requestURI.substring(requestURI.lastIndexOf(".") + 1, requestURI.length());
+        final String format = requestURI.substring(requestURI.lastIndexOf(".") + 1);
         final ExportFormat exportFormat = ExportFormat.valueOf(format.toUpperCase());
 
         ModelAndView result;

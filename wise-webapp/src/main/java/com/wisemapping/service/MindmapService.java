@@ -28,7 +28,7 @@ import java.util.List;
 
 public interface MindmapService {
 
-    static final String TAG_SEPARATOR = " ";
+    String TAG_SEPARATOR = " ";
 
     @Nullable
     Mindmap findMindmapById(int id);
