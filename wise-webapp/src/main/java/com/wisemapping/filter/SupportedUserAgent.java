@@ -18,7 +18,9 @@
 
 package com.wisemapping.filter;
 
-import com.wisemapping.util.*;
+import com.wisemapping.util.Browser;
+import com.wisemapping.util.UserAgent;
+import com.wisemapping.util.Version;
 import org.jetbrains.annotations.NotNull;
 
 import javax.servlet.http.HttpServletRequest;

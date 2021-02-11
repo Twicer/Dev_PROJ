@@ -18,8 +18,8 @@
 
 package com.wisemapping.service;
 
-import com.wisemapping.model.*;
 import com.wisemapping.exceptions.WiseMappingException;
+import com.wisemapping.model.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

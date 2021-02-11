@@ -18,10 +18,10 @@
 
 package com.wisemapping.dao;
 
+import com.wisemapping.model.AccessAuditory;
 import com.wisemapping.model.Collaboration;
 import com.wisemapping.model.Collaborator;
 import com.wisemapping.model.User;
-import com.wisemapping.model.AccessAuditory;
 import org.hibernate.ObjectNotFoundException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

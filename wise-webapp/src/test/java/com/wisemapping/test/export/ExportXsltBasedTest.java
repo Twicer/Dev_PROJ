@@ -4,7 +4,6 @@ import com.wisemapping.exporter.ExportException;
 import com.wisemapping.exporter.ExportFormat;
 import com.wisemapping.exporter.Exporter;
 import com.wisemapping.exporter.XSLTExporter;
-import com.wisemapping.importer.ImporterException;
 import com.wisemapping.model.Mindmap;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;

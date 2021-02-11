@@ -21,15 +21,13 @@ package com.wisemapping.importer.freemind;
 import com.wisemapping.importer.Importer;
 import com.wisemapping.importer.ImporterException;
 import com.wisemapping.importer.VersionNumber;
+import com.wisemapping.jaxb.freemind.*;
+import com.wisemapping.jaxb.wisemap.Link;
+import com.wisemapping.jaxb.wisemap.RelationshipType;
+import com.wisemapping.jaxb.wisemap.TopicType;
 import com.wisemapping.model.Mindmap;
 import com.wisemapping.model.ShapeStyle;
 import com.wisemapping.util.JAXBUtils;
-import com.wisemapping.jaxb.freemind.*;
-import com.wisemapping.jaxb.freemind.Map;
-import com.wisemapping.jaxb.freemind.Node;
-import com.wisemapping.jaxb.wisemap.RelationshipType;
-import com.wisemapping.jaxb.wisemap.TopicType;
-import com.wisemapping.jaxb.wisemap.Link;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -38,15 +36,19 @@ import org.jsoup.nodes.Document;
 import org.w3c.dom.Element;
 
 import javax.xml.bind.JAXBException;
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.InputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
-import java.util.*;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class FreemindImporter
         implements Importer {

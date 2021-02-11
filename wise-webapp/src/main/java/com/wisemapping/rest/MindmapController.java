@@ -28,7 +28,6 @@ import com.wisemapping.rest.model.*;
 import com.wisemapping.security.Utils;
 import com.wisemapping.service.*;
 import com.wisemapping.validator.MapInfoValidator;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;

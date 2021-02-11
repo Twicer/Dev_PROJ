@@ -18,9 +18,9 @@
 
 package com.wisemapping.dao;
 
+import com.wisemapping.model.AccessAuditory;
 import com.wisemapping.model.Collaborator;
 import com.wisemapping.model.User;
-import com.wisemapping.model.AccessAuditory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

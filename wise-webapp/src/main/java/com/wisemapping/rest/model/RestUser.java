@@ -29,7 +29,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Calendar;
-import java.util.Set;
 
 
 @XmlRootElement(name = "user")

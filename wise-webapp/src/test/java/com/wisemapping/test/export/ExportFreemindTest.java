@@ -3,7 +3,6 @@ package com.wisemapping.test.export;
 import com.wisemapping.exporter.ExportException;
 import com.wisemapping.exporter.FreemindExporter;
 import com.wisemapping.importer.ImporterException;
-
 import com.wisemapping.model.Mindmap;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;

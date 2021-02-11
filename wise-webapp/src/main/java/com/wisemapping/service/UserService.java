@@ -18,8 +18,8 @@
 
 package com.wisemapping.service;
 
-import com.wisemapping.model.User;
 import com.wisemapping.exceptions.WiseMappingException;
+import com.wisemapping.model.User;
 import org.jetbrains.annotations.NotNull;
 
 public interface UserService {
