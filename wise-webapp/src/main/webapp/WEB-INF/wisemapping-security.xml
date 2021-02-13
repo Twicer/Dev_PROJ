@@ -67,7 +67,8 @@
                         authentication-failure-url="/c/login?login_error=2"
                         login-processing-url="/c/perform-login"/>
 
-        <sec:remember-me key="wisemapping-hashed-key"/>
+        <!-- Expire in 28 days -->
+        <sec:remember-me  token-validity-seconds="2419200" remember-me-parameter="remember-me"/>
         <sec:logout logout-url="/c/logout" invalidate-session="true" logout-success-url="/c/login"/>
     </sec:http>
 
