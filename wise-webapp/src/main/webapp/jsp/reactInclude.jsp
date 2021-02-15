@@ -1,6 +1,9 @@
-<!-- This is a temporal hack only with the purpose to allow the transition with Spring MVC-->
 <!DOCTYPE html>
 <html lang="en">
+<%
+    // @todo: Review ...
+    response.setCharacterEncoding("UTF-8");
+%>
 
 <head>
     <script>

@@ -31,7 +31,7 @@ import java.security.NoSuchAlgorithmException;
 public class LegacyPasswordEncoder implements PasswordEncoder {
     final private static Logger logger = Logger.getLogger(LegacyPasswordEncoder.class);
 
-    private static final String ENC_PREFIX = "ENC:";
+    public static final String ENC_PREFIX = "ENC:";
     private final ShaPasswordEncoder sha1Encoder = new ShaPasswordEncoder();
 
     @Override
