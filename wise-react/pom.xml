@@ -34,6 +34,38 @@
                             <workingDirectory>target</workingDirectory>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>npm-resources</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <executable>yarn</executable>
+                            <arguments>
+                                <argument>install</argument>
+                            </arguments>
+                            <workingDirectory>target/node_modules/@wisemapping/webapp/</workingDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm-compile</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <successCodes>
+                                <successCode>1</successCode>
+                                <successCode>0</successCode>
+                            </successCodes>
+                            <executable>yarn</executable>
+                            <arguments>
+                                <argument>build</argument>
+                            </arguments>
+                            <workingDirectory>target/node_modules/@wisemapping/webapp/</workingDirectory>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
