@@ -47,10 +47,4 @@ public class UsersController {
         return new ModelAndView("registration");
     }
 
-    @RequestMapping(value = "account/settings", method = RequestMethod.GET)
-    public String showUserSettingsPage(@NotNull Model model) {
-        model.addAttribute("user", Utils.getUser());
-        return "accountSettings";
-    }
-
 }

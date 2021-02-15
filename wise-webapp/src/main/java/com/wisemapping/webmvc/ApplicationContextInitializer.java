@@ -25,12 +25,13 @@ import org.springframework.web.context.ConfigurableWebApplicationContext;
 import org.springframework.web.context.support.ServletContextResource;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class ApplicationContextInitializer implements org.springframework.context.ApplicationContextInitializer<ConfigurableWebApplicationContext> {
 
     public void initialize(@NotNull ConfigurableWebApplicationContext ctx) {
         try {
-            final Resource resource = new ServletContextResource(ctx.getServletContext(), "/WEB-INF/app.properties");
+            final Resource resource = new ServletContextResource(Objects.requireNonNull(ctx.getServletContext()), "/WEB-INF/app.properties");
             final ResourcePropertySource resourcePropertySource = new ResourcePropertySource(resource);
             ctx.getEnvironment().getPropertySources().addFirst(resourcePropertySource);
         } catch (IOException e) {

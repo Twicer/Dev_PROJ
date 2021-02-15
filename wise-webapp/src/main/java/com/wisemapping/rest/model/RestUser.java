@@ -56,7 +56,11 @@ public class RestUser {
     public Calendar getCreationDate() {
         return user.getCreationDate();
     }
-    
+
+    public String getLocale() {
+        return user.getLocale();
+    }
+
     public String getFirstname() {
         return user.getFirstname();
     }
