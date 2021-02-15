@@ -1,15 +1,9 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
-<%
-    // @todo: Review ...
-    response.setCharacterEncoding("UTF-8");
-%>
-
 <head>
-    <script>
-        window.serverconfig = { apiBaseUrl: 'http://localhost:8080' };
-    </script>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta charset="utf-8" />
     <base href="/static/" />
     <link rel="icon" href="favicon.ico" />
@@ -22,6 +16,11 @@
     <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="manifest" href="manifest.json" />
     <title>Loading | WiseMapping</title>
+
+    <script>
+        window.serverconfig = { apiBaseUrl: 'http://localhost:8080' };
+    </script>
+
 </head>
 
 <body>
