@@ -15,8 +15,7 @@ pipelines:
           caches:
             - maven
           script:
-            - apk add nodejs npm
-            - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.3.2 || true
+            - apk add nodejs npm yarn
             - export PATH=$HOME/.yarn/bin:$PATH
             - mvn -B verify --file pom.xml install
           after-script:
