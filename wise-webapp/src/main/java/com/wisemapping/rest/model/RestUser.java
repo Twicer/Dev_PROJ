@@ -49,7 +49,6 @@ public class RestUser {
 
     public RestUser(@NotNull User user) {
         this.user = user;
-        this.password = user.getPassword();
     }
 
     @JsonIgnore
@@ -97,6 +96,10 @@ public class RestUser {
     public void setPassword(final String password) {
         this.user.setPassword(password);
         this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @JsonIgnore

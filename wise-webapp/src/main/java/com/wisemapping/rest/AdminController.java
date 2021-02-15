@@ -102,6 +102,12 @@ public class AdminController extends BaseController {
             throw new IllegalArgumentException("firstname can not be null");
         }
 
+
+        final String password = delegated.getPassword();
+        if (password == null || password.isEmpty()) {
+            throw new IllegalArgumentException("password can not be null");
+        }
+
         // Finally create the user ...
         delegated.setAuthenticationType(AuthenticationType.DATABASE);
         userService.createUser(delegated, false, true);
