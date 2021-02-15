@@ -28,7 +28,6 @@ import com.wisemapping.rest.model.*;
 import com.wisemapping.security.Utils;
 import com.wisemapping.service.*;
 import com.wisemapping.validator.MapInfoValidator;
-import io.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -451,7 +450,7 @@ public class MindmapController extends BaseController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/maps/{id}/starred", consumes = {"text/plain"}, produces = {"application/json", "application/xml"})
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void updateStarredState(@RequestBody @ApiParam(defaultValue = "false", allowableValues = "true,false") String value, @PathVariable int id) throws WiseMappingException {
+    public void updateStarredState(@RequestBody String value, @PathVariable int id) throws WiseMappingException {
 
         final Mindmap mindmap = findMindmapById(id);
         final User user = Utils.getUser();

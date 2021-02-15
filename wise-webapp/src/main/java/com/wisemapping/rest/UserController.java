@@ -26,8 +26,6 @@ import com.wisemapping.rest.model.RestUserRegistration;
 import com.wisemapping.service.*;
 import com.wisemapping.validator.Messages;
 import com.wisemapping.validator.UserValidator;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +39,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Api(value = "UserApi")
 @Controller
 @CrossOrigin
 public class UserController extends BaseController {
@@ -62,7 +59,7 @@ public class UserController extends BaseController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/users", produces = {"application/json", "application/xml"})
     @ResponseStatus(value = HttpStatus.CREATED)
-    public void registerUser(@RequestBody @ApiParam(required = true) RestUserRegistration registration, @NotNull HttpServletRequest request, @NotNull HttpServletResponse response) throws WiseMappingException, BindException {
+    public void registerUser(@RequestBody RestUserRegistration registration, @NotNull HttpServletRequest request, @NotNull HttpServletResponse response) throws WiseMappingException, BindException {
         logger.info("Register new user:" + registration.getEmail());
 
         verify(registration, request.getRemoteAddr());
