@@ -76,7 +76,6 @@ public class RestUser {
         user.setLastname(lastname);
     }
 
-    @JsonIgnore
     public long getId() {
         return user.getId();
     }
