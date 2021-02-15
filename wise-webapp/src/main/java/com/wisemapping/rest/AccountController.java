@@ -28,7 +28,6 @@ import com.wisemapping.rest.model.RestUser;
 import com.wisemapping.security.Utils;
 import com.wisemapping.service.MindmapService;
 import com.wisemapping.service.UserService;
-import io.swagger.annotations.Api;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +42,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@Api(value="UserApi",description = "Account Account Related Objects.")
 @Controller
 public class AccountController extends BaseController {
     @Qualifier("userService")
