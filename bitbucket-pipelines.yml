@@ -15,7 +15,7 @@ pipelines:
           caches:
             - maven
           script:
-            - apk add nodejs npm yarn
+            - apt-get install nodejs npm yarn
             - export PATH=$HOME/.yarn/bin:$PATH
             - mvn -B verify --file pom.xml install
           after-script:
