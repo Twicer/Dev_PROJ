@@ -16,9 +16,10 @@ pipelines:
             - maven
           script:
             - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
-            - nvm install node
+            - export PATH=$HOME/.nvm:$PATH
+            - nvm.sh install node
             - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.3.2 || true
-            - export PATH=$HOME/.nvm:$HOME/.yarn/bin:$PATH
+            - export PATH=$HOME/.yarn/bin:$PATH
             - yarn --version
             - mvn -B verify --file pom.xml install
           after-script:
