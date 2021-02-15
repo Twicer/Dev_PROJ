@@ -54,7 +54,7 @@ public class RestAdminITCase {
         // Change password ...
         requestHeaders.setContentType(MediaType.TEXT_PLAIN);
         HttpEntity<String> createUserEntity = new HttpEntity<String>("some-new-password", requestHeaders);
-        templateRest.put(BASE_REST_URL + "/admin/users/{id}/password", createUserEntity, result.getBody().getEmail());
+        templateRest.put(BASE_REST_URL + "/admin/users/{id}/password", createUserEntity, result.getBody().getId());
     }
 
 
