@@ -22,6 +22,7 @@ package com.wisemapping.rest.model;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.wisemapping.model.User;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,6 +39,7 @@ import java.util.Calendar;
         getterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY,
         isGetterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RestUser {
 
     private final User user;
@@ -51,7 +53,6 @@ public class RestUser {
         this.user = user;
     }
 
-    @JsonIgnore
     public Calendar getCreationDate() {
         return user.getCreationDate();
     }
