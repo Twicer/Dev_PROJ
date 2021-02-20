@@ -44,6 +44,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -354,7 +355,7 @@ public class MindmapController extends BaseController {
         mindmapService.updateMindmap(mindMap, false);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/maps/{id}/collabs", consumes = {"application/json", "application/xml"}, produces = {"application/json", "application/xml"})
+    @RequestMapping(method = RequestMethod.POST, value = "/maps/{id}/collabs/", consumes = {"application/json", "application/xml"}, produces = {"application/json", "application/xml"})
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void updateCollabs(@PathVariable int id, @NotNull @RequestBody RestCollaborationList restCollabs) throws CollaborationException, MapCouldNotFoundException {
         final Mindmap mindMap = findMindmapById(id);
@@ -393,6 +394,55 @@ public class MindmapController extends BaseController {
             mindmapService.removeCollaboration(mindMap, collaboration);
         }
     }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/maps/{id}/collabs/", consumes = {"application/json", "application/xml"}, produces = {"application/json", "application/xml"})
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void addCollab(@PathVariable int id, @NotNull @RequestBody RestCollaborationList restCollabs) throws CollaborationException, MapCouldNotFoundException {
+        final Mindmap mindMap = findMindmapById(id);
+
+        // Only owner can change collaborators...
+        final User user = Utils.getUser();
+        if (!mindMap.hasPermissions(user, CollaborationRole.OWNER)) {
+            throw new IllegalArgumentException("No enough permissions");
+        }
+
+        // Has any role changed ?. Just removed it.
+        final Map<String, Collaboration> mapsByEmail = mindMap
+                .getCollaborations()
+                .stream()
+                .collect(Collectors.toMap(collaboration -> collaboration.getCollaborator().getEmail(), collaboration -> collaboration));
+
+        restCollabs
+                .getCollaborations()
+                .forEach(collab->{
+                    final String email = collab.getEmail();
+                    if(mapsByEmail.containsKey(email)){
+                        try {
+                            mindmapService.removeCollaboration(mindMap, mapsByEmail.get(email));
+                        } catch (CollaborationException e) {
+                          logger.error(e);
+                        }
+                    }
+        });
+
+
+        // Great, let's add all the collabs again ...
+        for (RestCollaboration restCollab : restCollabs.getCollaborations()) {
+            final Collaboration collaboration = mindMap.findCollaboration(restCollab.getEmail());
+            // Validate role format ...
+            String roleStr = restCollab.getRole();
+            if (roleStr == null) {
+                throw new IllegalArgumentException(roleStr + " is not a valid role");
+            }
+
+            // Is owner ?
+            final CollaborationRole role = CollaborationRole.valueOf(roleStr.toUpperCase());
+            if (role != CollaborationRole.OWNER) {
+                mindmapService.addCollaboration(mindMap, restCollab.getEmail(), role, restCollabs.getMessage());
+            }
+        }
+    }
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/maps/{id}/collabs", produces = {"application/json", "application/xml"})
     public RestCollaborationList retrieveList(@PathVariable int id) throws MapCouldNotFoundException {
