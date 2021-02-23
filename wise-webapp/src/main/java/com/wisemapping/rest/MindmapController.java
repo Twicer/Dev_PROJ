@@ -498,6 +498,31 @@ public class MindmapController extends BaseController {
         mindmapService.removeMindmap(mindmap, user);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/maps/{id}/collabs")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void deleteCollabByEmail(@PathVariable int id, @RequestParam(required = false) String email) throws IOException, WiseMappingException {
+        logger.debug("Deleting permission for email:" + email);
+
+        final Mindmap mindmap = findMindmapById(id);
+        final User user = Utils.getUser();
+
+        // Only owner can change collaborators...
+        if (!mindmap.hasPermissions(user, CollaborationRole.OWNER)) {
+            throw new IllegalArgumentException("No enough permissions");
+        }
+
+        final Collaboration collab = mindmap.findCollaboration(email);
+        if(collab!=null) {
+            CollaborationRole role = collab.getRole();
+
+            // Owner collab can not be removed ...
+            if (role == CollaborationRole.OWNER) {
+                throw new IllegalArgumentException("Can not remove owner collab");
+            }
+            mindmapService.removeCollaboration(mindmap, collab);
+        }
+    }
+
     @RequestMapping(method = RequestMethod.PUT, value = "/maps/{id}/starred", consumes = {"text/plain"}, produces = {"application/json", "application/xml"})
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void updateStarredState(@RequestBody String value, @PathVariable int id) throws WiseMappingException {
