@@ -35,7 +35,7 @@ import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@XmlRootElement(name = "map")
+@XmlRootElement(name = "mapinfo")
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @JsonAutoDetect(
         fieldVisibility = JsonAutoDetect.Visibility.NONE,

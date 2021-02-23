@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement(name = "collaboration")
+@XmlRootElement(name = "collaborations")
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @JsonAutoDetect(
         fieldVisibility = JsonAutoDetect.Visibility.NONE,

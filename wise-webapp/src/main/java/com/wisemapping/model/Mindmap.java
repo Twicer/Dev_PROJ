@@ -167,7 +167,6 @@ public class Mindmap {
         this.isPublic = isPublic;
     }
 
-    @NotNull
     public Calendar getLastModificationTime() {
         return lastModificationTime;
     }

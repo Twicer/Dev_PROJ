@@ -437,9 +437,11 @@ public class MindmapController extends BaseController {
 
             // Is owner ?
             final CollaborationRole role = CollaborationRole.valueOf(roleStr.toUpperCase());
-            if (role != CollaborationRole.OWNER) {
-                mindmapService.addCollaboration(mindMap, restCollab.getEmail(), role, restCollabs.getMessage());
+            if (role == CollaborationRole.OWNER) {
+                throw new IllegalArgumentException("Owner can not be added as part of the collaboration list.");
             }
+
+            mindmapService.addCollaboration(mindMap, restCollab.getEmail(), role, restCollabs.getMessage());
         }
     }
 
