@@ -486,7 +486,7 @@
                             <groupId>org.wisemapping</groupId>
                             <artifactId>wise-react</artifactId>
                             <type>jar</type>
-                            <targetPath>react</targetPath>
+                            <targetPath>static</targetPath>
                             <includes>
                                 <include>**/*</include>
                             </includes>
