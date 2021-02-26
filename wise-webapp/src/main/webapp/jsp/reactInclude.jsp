@@ -28,7 +28,6 @@
     <div id="root"></div>
     <script src="vendors.bundle.js"></script>
     <script src="app.bundle.js"></script>
-    <script src="material-ui.bundle.js"></script>
 </body>
 
 </html>
