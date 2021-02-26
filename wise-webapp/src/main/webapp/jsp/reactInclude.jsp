@@ -18,7 +18,7 @@
     <title>Loading | WiseMapping</title>
 
     <script>
-        window.serverconfig = { apiBaseUrl: 'http://localhost:8080' };
+        window.serverconfig = { apiBaseUrl: '' };
     </script>
 
 </head>
