@@ -50,10 +50,7 @@ public class UserController extends BaseController {
     private RecaptchaService captchaService;
 
     @Value("${google.recaptcha2.enabled}")
-    private boolean captchaEnabled;
-
-    @Value("${google.recaptcha2.siteKey}")
-    private String recaptchaSiteKey;
+    private boolean recatchaEnabled;
 
     final Logger logger = Logger.getLogger(UserController.class);
 
@@ -93,7 +90,7 @@ public class UserController extends BaseController {
         validator.validate(registration, errors);
 
         // If captcha is enabled, generate it ...
-        if (captchaEnabled) {
+        if (recatchaEnabled) {
             final String recaptcha = registration.getRecaptcha();
             if (recaptcha != null) {
                 final String reCaptchaResponse = captchaService.verifyRecaptcha(recaptcha, remoteAddress);
