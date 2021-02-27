@@ -34,7 +34,7 @@ public class RequestPropertiesInterceptor extends HandlerInterceptorAdapter {
     private String analyticsAccount;
 
     @Value("${google.recaptcha2.enabled }")
-    private boolean recaptcha2Enabled;
+    private Boolean recaptcha2Enabled;
 
     @Value("${google.recaptcha2.siteKey}")
     private String recaptcha2SiteKey;
