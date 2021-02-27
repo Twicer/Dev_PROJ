@@ -50,7 +50,7 @@ public class UserController extends BaseController {
     private RecaptchaService captchaService;
 
     @Value("${google.recaptcha2.enabled}")
-    private boolean recatchaEnabled;
+    private Boolean recatchaEnabled;
 
     final Logger logger = Logger.getLogger(UserController.class);
 
