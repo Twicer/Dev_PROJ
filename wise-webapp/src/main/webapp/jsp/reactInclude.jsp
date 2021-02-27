@@ -18,9 +18,38 @@
     <title>Loading | WiseMapping</title>
 
     <script>
-        window.serverconfig = { apiBaseUrl: '' };
+        window.serverconfig = {
+            apiBaseUrl: '',
+            analyticsAccount: '${requestScope['google.analytics.account']}',
+            clientType: 'rest',
+            recaptcha2Enabled: ${requestScope['google.recaptcha2.enabled']},
+            recaptcha2SiteKey: '${requestScope['google.recaptcha2.siteKey']}'
+        };
+
     </script>
 
+    <c:if test="${requestScope['google.analytics.enabled']}">
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-2347723-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', );
+      </script>
+
+
+      <!-- Google Ads Sense  Config-->
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: '${requestScope['google.adssense.account']}',
+          enable_page_level_ads: true,
+          overlays: { bottom: true }
+        });
+      </script>
+    </c:if>
 </head>
 
 <body>
