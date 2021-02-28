@@ -7,6 +7,7 @@ import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
 import org.apache.log4j.Logger;
 
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -22,18 +23,18 @@ public class RecaptchaService {
     private final static ObjectMapper objectMapper = new ObjectMapper();
     private String recaptchaSecret;
 
-    public String verifyRecaptcha(String ip, String recaptchaResponse) {
+    public String verifyRecaptcha(@NotNull String ip, @NotNull String recaptcha) {
 
         final List<NameValuePair> build = Form.form()
                 .add("secret", recaptchaSecret)
-                .add("response", recaptchaResponse)
+                .add("response", recaptcha)
                 .add("remoteip", ip)
                 .build();
 
         // Add logs ...
         logger.debug("Response from remoteip: " + ip);
         logger.debug("Response from recaptchaSecret: " + recaptchaSecret);
-        logger.debug("Response from recaptchaResponse: " + recaptchaResponse);
+        logger.debug("Response from recaptcha: " + recaptcha);
 
         String result = StringUtils.EMPTY;
         HashMap bodyJson;

@@ -93,7 +93,7 @@ public class UserController extends BaseController {
         if (recatchaEnabled) {
             final String recaptcha = registration.getRecaptcha();
             if (recaptcha != null) {
-                final String reCaptchaResponse = captchaService.verifyRecaptcha(recaptcha, remoteAddress);
+                final String reCaptchaResponse = captchaService.verifyRecaptcha(remoteAddress,recaptcha);
                 if (!reCaptchaResponse.isEmpty()) {
                     errors.rejectValue("recaptcha", reCaptchaResponse);
                 }
