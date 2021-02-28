@@ -42,6 +42,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @CrossOrigin
 public class UserController extends BaseController {
+    public static final String X_FORWARDED_FOR_HEADER = "X-Forwarded-For";
     @Qualifier("userService")
     @Autowired
     private UserService userService;
@@ -59,7 +60,12 @@ public class UserController extends BaseController {
     public void registerUser(@RequestBody RestUserRegistration registration, @NotNull HttpServletRequest request, @NotNull HttpServletResponse response) throws WiseMappingException, BindException {
         logger.info("Register new user:" + registration.getEmail());
 
-        verify(registration, request.getRemoteAddr());
+        // If tomcat is behind a reverse proxy, ip needs to be found in other header.
+        String remoteIp = request.getHeader(X_FORWARDED_FOR_HEADER);
+        if(remoteIp==null){
+            remoteIp = request.getRemoteAddr();
+        }
+        verify(registration, remoteIp);
 
         final User user = new User();
         user.setEmail(registration.getEmail().trim());
