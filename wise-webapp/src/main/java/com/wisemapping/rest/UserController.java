@@ -42,7 +42,6 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @CrossOrigin
 public class UserController extends BaseController {
-    public static final String X_FORWARDED_FOR_HEADER = "X-Forwarded-For";
     @Qualifier("userService")
     @Autowired
     private UserService userService;
@@ -53,7 +52,8 @@ public class UserController extends BaseController {
     @Value("${google.recaptcha2.enabled}")
     private Boolean recatchaEnabled;
 
-    final Logger logger = Logger.getLogger(UserController.class);
+    private static final Logger logger = Logger.getLogger(UserController.class);
+    private static final String REAL_IP_ADDRESS_HEADER = "X-Real-IP";
 
     @RequestMapping(method = RequestMethod.POST, value = "/users", produces = {"application/json", "application/xml"})
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -61,10 +61,12 @@ public class UserController extends BaseController {
         logger.info("Register new user:" + registration.getEmail());
 
         // If tomcat is behind a reverse proxy, ip needs to be found in other header.
-        String remoteIp = request.getHeader(X_FORWARDED_FOR_HEADER);
-        if(remoteIp==null){
+        String remoteIp = request.getHeader(REAL_IP_ADDRESS_HEADER);
+        if(remoteIp==null || remoteIp.isEmpty()){
             remoteIp = request.getRemoteAddr();
         }
+        logger.debug("Remote address" + remoteIp);
+
         verify(registration, remoteIp);
 
         final User user = new User();
