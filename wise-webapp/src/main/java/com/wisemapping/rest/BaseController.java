@@ -111,7 +111,8 @@ public class BaseController {
     public RestErrors handleServerErrors(@NotNull Exception ex, @NotNull HttpServletRequest request) {
         final User user = Utils.getUser(false);
         notificationService.reportJavaException(ex, user, request);
-        ex.printStackTrace();
+        logger.error(ex);
+
         return new RestErrors(ex.getMessage(), Severity.SEVERE);
     }
 

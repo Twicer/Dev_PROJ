@@ -37,7 +37,6 @@ public class RecaptchaService {
         logger.debug("Response from recaptcha: " + recaptcha);
 
         String result = StringUtils.EMPTY;
-        HashMap bodyJson;
         try {
             final byte[] body = Request
                     .Post(GOOGLE_RECAPTCHA_VERIFY_URL)
@@ -46,15 +45,13 @@ public class RecaptchaService {
                     .returnContent()
                     .asBytes();
 
-            bodyJson = objectMapper
-                    .readValue(body, HashMap.class);
+            final Map responseBody = objectMapper.readValue(body, HashMap.class);
+            logger.warn("Response from recaptcha after parse: " + responseBody);
 
-            logger.debug("Response from recaptcha after parse: " + bodyJson);
-
-            final Boolean success = (Boolean) bodyJson.get("success");
+            final Boolean success = (Boolean) responseBody.get("success");
             if (success!=null && !success) {
-                final List<String> errorCodes = (List<String>) bodyJson.get("error-codes");
-                result = RecaptchaUtil.RECAPTCHA_ERROR_CODE.get(errorCodes.get(0));
+                final List<String> errorCodes = (List<String>) responseBody.get("error-codes");
+                result = RecaptchaUtil.codeToDescription(errorCodes.get(0));
             }
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
@@ -73,8 +70,13 @@ public class RecaptchaService {
 
 class RecaptchaUtil {
 
-    static final Map<String, String>
+    private static final Map<String, String>
             RECAPTCHA_ERROR_CODE = new HashMap<>();
+
+    static String codeToDescription(final String code)
+    {
+        return  RECAPTCHA_ERROR_CODE.getOrDefault(code,"Unexpected error validating code. Please, refresh the page and try again.");
+    }
 
     static {
         RECAPTCHA_ERROR_CODE.put("missing-input-secret",
@@ -87,5 +89,7 @@ class RecaptchaUtil {
                 "The response parameter is invalid or malformed");
         RECAPTCHA_ERROR_CODE.put("bad-request",
                 "The request is invalid or malformed");
+        RECAPTCHA_ERROR_CODE.put("timeout-or-duplicate",
+                "Please, refresh the page and try again.");
     }
 }
