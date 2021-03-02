@@ -527,12 +527,14 @@ public class MindmapController extends BaseController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/maps/{id}/starred", consumes = {"text/plain"}, produces = {"application/json", "application/xml"})
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void updateStarredState(@RequestBody boolean starred, @PathVariable int id) throws WiseMappingException {
+    public void updateStarredState(@RequestBody String value, @PathVariable int id) throws WiseMappingException {
 
+        logger.debug("Update starred:" + value);
         final Mindmap mindmap = findMindmapById(id);
         final User user = Utils.getUser();
 
         // Update map status ...
+        final boolean starred = Boolean.parseBoolean(value);
         final Collaboration collaboration = mindmap.findCollaboration(user);
         if (collaboration == null) {
             throw new WiseMappingException("No enough permissions.");
