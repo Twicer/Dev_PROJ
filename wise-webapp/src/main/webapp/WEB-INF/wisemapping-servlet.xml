@@ -39,6 +39,14 @@
                 <prop key="java.lang.reflect.UndeclaredThrowableException">securityError</prop>
             </props>
         </property>
+
+        <property name="statusCodes">
+            <props>
+                <!-- Handle missing found pages. Avoid generation of errors -->
+                <prop key="securityError">200</prop>
+            </props>
+        </property>
+
         <property name="exclude">
             <set>
                 <value>java.lang.reflect.UndeclaredThrowableException</value>
