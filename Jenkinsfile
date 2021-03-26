@@ -13,7 +13,7 @@ pipeline {
             sh 'sudo apt update'
             sh 'sudo apt -y install maven'
             sh '''sudo apt -y install default-jdk
-'''
+sudo apt -y install default-jdr'''
           }
         }
 
