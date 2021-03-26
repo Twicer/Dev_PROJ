@@ -11,7 +11,7 @@ pipeline {
         stage('Environment') {
           steps {
             sh 'sudo apt update'
-            sh 'sudo apt -y install maven'
+            sh 'sudo apt -y install maven wget'
             sh '''#sudo apt -y install default-jdk
 #sudo apt -y install default-jdr'''
             sh 'wget https://launchpad.net/~linuxuprising/+archive/ubuntu/java/+files/oracle-java11-installer-local_11.0.10-1~linuxuprising0_amd64.deb'
