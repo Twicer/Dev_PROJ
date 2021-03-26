@@ -12,6 +12,9 @@ pipeline {
           steps {
             sh '''sudo apt update
 sudo apt search openjdk sudo apt -y install openjdk-9-jdk sudo apt-cache search maven sudo apt -y install maven'''
+            sh 'sudo apt install default-jre'
+            sh '''sudo apt install default-jdk
+'''
           }
         }
 
