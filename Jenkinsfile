@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'LocalDebian10'
+      label 'instance1'
     }
 
   }
@@ -17,7 +17,7 @@ apt searchopenjdk apt -y install openjdk-9-jdk apt-cache search maven apt -y ins
 
         stage('error') {
           steps {
-            sh 'mvn -B verify --file pom.xml install'
+            sh '#mvn -B verify --file pom.xml install'
           }
         }
 
