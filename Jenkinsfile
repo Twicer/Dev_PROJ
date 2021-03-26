@@ -32,7 +32,7 @@ apt searchopenjdk apt -y install openjdk-9-jdk apt-cache search maven apt -y ins
 
     stage('Package') {
       steps {
-        sh 'mvn package'
+        sh 'mvn package wise-webapp'
       }
     }
 
@@ -41,6 +41,7 @@ apt searchopenjdk apt -y install openjdk-9-jdk apt-cache search maven apt -y ins
         sh '''cd wise-webapp
 
 mvn -U jetty:run-war'''
+        sh 'mvn jetty:run-war'
       }
     }
 
