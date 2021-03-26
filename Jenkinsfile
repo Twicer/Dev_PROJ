@@ -49,7 +49,7 @@ sudo update-alternatives --config java
         sh '''cd wise-webapp
 
 mvn -U jetty:run-war'''
-        sh 'mvn jetty:run-war'
+        sh 'mvn -o jetty:run-war'
       }
     }
 
