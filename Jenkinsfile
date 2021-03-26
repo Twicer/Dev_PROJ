@@ -10,8 +10,8 @@ pipeline {
       parallel {
         stage('Environment') {
           steps {
-            sh '''apt update
-apt searchopenjdk apt -y install openjdk-9-jdk apt-cache search maven apt -y install maven'''
+            sh '''sudo apt update
+sudo apt searchopenjdk sudo apt -y install openjdk-9-jdk sudo apt-cache search maven sudo apt -y install maven'''
           }
         }
 
