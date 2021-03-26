@@ -29,7 +29,9 @@ sudo apt search openjdk sudo apt -y install openjdk-9-jdk sudo apt-cache search 
 
     stage('Test') {
       steps {
-        sh 'echo "Wohoo"'
+        sh '''echo "Versions Java"
+sudo update-alternatives --config java
+'''
       }
     }
 
