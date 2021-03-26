@@ -12,12 +12,8 @@ pipeline {
           steps {
             sh 'sudo apt update'
             sh 'sudo apt -y install maven'
-            sh '''#opennms
-deb https://debian.opennms.org/ stable main
+            sh '''sudo apt -y install default-jdk
 '''
-            sh '''wget -O - http://debian.opennms.org/OPENNMS-GPG-KEY | sudo apt-key add -
-sudo apt update
-sudo apt -y install oracle-java8-installer'''
           }
         }
 
