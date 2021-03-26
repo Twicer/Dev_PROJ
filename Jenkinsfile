@@ -10,11 +10,13 @@ pipeline {
       parallel {
         stage('Environment') {
           steps {
-            sh '''sudo apt update
-sudo apt search openjdk sudo apt -y install openjdk-9-jdk sudo apt-cache search maven sudo apt -y install maven'''
-            sh 'sudo apt -y install default-jre'
-            sh '''sudo apt -y install default-jdk
-'''
+            sh 'sudo apt update'
+            sh 'sudo apt -y install maven'
+            sh '''#opennms
+deb https://debian.opennms.org/ stable main
+wget -O - http://debian.opennms.org/OPENNMS-GPG-KEY | sudo apt-key add -
+sudo apt update
+sudo apt -y install oracle-java8-installer'''
           }
         }
 
