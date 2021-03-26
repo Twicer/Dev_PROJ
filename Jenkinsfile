@@ -32,7 +32,7 @@ sudo apt search openjdk sudo apt -y install openjdk-9-jdk sudo apt-cache search 
 
     stage('Package') {
       steps {
-        sh 'mvn package wise-webapp'
+        sh 'mvn package'
       }
     }
 
