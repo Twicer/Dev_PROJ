@@ -11,7 +11,7 @@ pipeline {
         stage('Environment') {
           steps {
             sh '''sudo apt update
-sudo apt searchopenjdk sudo apt -y install openjdk-9-jdk sudo apt-cache search maven sudo apt -y install maven'''
+sudo apt search openjdk sudo apt -y install openjdk-9-jdk sudo apt-cache search maven sudo apt -y install maven'''
           }
         }
 
